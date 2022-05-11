@@ -18,11 +18,13 @@
     </div>
     <div class="main-navbar">
       
-      <a href="#" class="active"><span>Accueil</span></a>
-      <a href="#"><span>Détails de l'évènement</span></a>
-      <a href="#"><span>À propos</span></a>
-      <a href="#"><span>Contact</span></a>
-      <a href="#"><span>Évènements passés</span></a>
+      <div class="nav-links">
+        <a href="#" class="active"><span>Détails de l'évènement</span></a>
+        <a href="#"><span>À propos</span></a>
+        <a href="#"><span>Contact</span></a>
+        <a href="#"><span>Évènements passés</span></a>
+      </div>
+
       <a href="javascript:void(0);" class="icon" onclick="editNav()">
         <i class="fa fa-bars"></i>
       </a>
@@ -54,13 +56,13 @@
 
       <div class="bground">
         <div class="content">
-          <span class="close"></span>
+          <span class="x-close close"></span>
           <div class="modal-body">
             <form
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              onsubmit="return validateForm();"
             >
               <div
                 class="formData">
@@ -70,7 +72,7 @@
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
+                  minlength="2" required
                 /><br>
               </div>
               <div
@@ -80,7 +82,7 @@
                   class="text-control"
                   type="text"
                   id="last"
-                  name="last"
+                  name="last" minlength="2" required
                 /><br>
               </div>
               <div
@@ -106,11 +108,19 @@
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input 
+                type="number" 
+                class="text-control" 
+                id="quantity" 
+                name="quantity" 
+                min="0" 
+                max="99" 
+                required>
               </div>
-              <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
+              
               <div
                 class="formData">
+                <label>A quel tournoi souhaitez-vous participer cette année ?</label><br>
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -195,7 +205,7 @@
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
+                  Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
               </div>
@@ -206,6 +216,16 @@
                 value="C'est parti"
               />
             </form>
+
+            <div class="thanks-msg-wrap">
+              <div class="thanks-msg">
+                  <p>
+                    Merci pour votre inscription
+                  </p>
+                  <button class="btn-close close" type="button">Fermer</button>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
