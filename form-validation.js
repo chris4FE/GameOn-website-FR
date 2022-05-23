@@ -23,9 +23,19 @@ const ErrorLocation = "Vous devez choisir une ville.";
 const ErrorAcceptTerms = "Veuillez lire et accepter les termes et conditions.";
 
 // REGEX
+const nameFormat = /^[a-zA-Zéèà ]+$/;
 const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const birthdateFormat = /^(19|20)\d{2}[-](0?[1-9]|1[012])[-](0[1-9]|[12]\d|3[01])$/;
-const nameFormat = /^[a-zA-Zéèà ]+$/;
+
+
+const showError = (input, message) => {
+    input.parentElement.lastElementChild.innerHTML = message;
+    input.classList.add('error');
+}
+const hideError = (input) => {
+    input.parentElement.lastElementChild.innerHTML = "";
+    input.classList.remove('error');
+}
 
 // Event listener
 form.addEventListener('submit', (e) => {
@@ -62,6 +72,36 @@ const checkLastName = () => {
     }
 }
 
+// VALIDATE EMAIL
+const checkEmail = () => {
+    let value = email.value.trim();
+    if (!value || !value.match(mailformat)) {
+        email.parentElement.lastElementChild.innerHTML = ErrorEmail;
+        email.classList.add('error');
+        return false;
+
+    }
+    else {
+        email.parentElement.lastElementChild.innerHTML = "";
+        email.classList.remove('error');
+        return true;
+    }
+}
+
+// VALIDATE BIRTHDATE
+const checkBirthdate = () => {
+    let value = birthdate.value;
+    if (!value || !value.match(birthdateFormat)) {
+        birthdate.parentElement.lastElementChild.innerHTML = ErrorBirthdate;
+        birthdate.classList.add('error');
+        return false;
+    } else {
+        birthdate.parentElement.lastElementChild.innerHTML = "";
+        birthdate.classList.remove('error');
+        return true;
+    }
+}
+
 // VALIDATE TOURNAMENTS QTY
 const checkTournamentsQuantity = () => {
     let value = tournamentQuantity.value;
@@ -90,44 +130,6 @@ const checkLocation = () => {
     }
 }
 
-// VALIDATE BIRTHDATE
-const checkBirthdate = () => {
-    let value = birthdate.value;
-    if (!value || !value.match(birthdateFormat)) {
-        birthdate.parentElement.lastElementChild.innerHTML = ErrorBirthdate;
-        birthdate.classList.add('error');
-        return false;
-    } else {
-        birthdate.parentElement.lastElementChild.innerHTML = "";
-        birthdate.classList.remove('error');
-        return true;
-    }
-}
-
-const showError = (input, message) => {
-    input.parentElement.lastElementChild.innerHTML = message;
-    input.classList.add('error');
-}
-const hideError = (input) => {
-    input.parentElement.lastElementChild.innerHTML = "";
-    input.classList.remove('error');
-}
-
-// VALIDATE EMAIL
-const checkEmail = () => {
-    let value = email.value.trim();
-    if (!value || !value.match(mailformat)) {
-        email.parentElement.lastElementChild.innerHTML = ErrorEmail;
-        email.classList.add('error');
-        return false;
-
-    }
-    else {
-        email.parentElement.lastElementChild.innerHTML = "";
-        email.classList.remove('error');
-        return true;
-    }
-}
 
 // VALIDATE CHECKED ACCEPT TERMS AND CONDITIONS BOX
 const checkAcceptTerms = () => {
@@ -141,7 +143,6 @@ const checkAcceptTerms = () => {
         return true;
     }
 }
-
 
 
 // VALIDATE ALL FORM INPUTS
