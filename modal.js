@@ -21,19 +21,33 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-// ------ Christine's code below
+// ------ Christine's code below ------
 // DOM Elements
 const closeModal = document.querySelector(".close");
-// const modalCloseBtn = document.querySelectorAll(".close")
+// const thankYouMsg = document.querySelector(".thanks-msg-wrap");
+// const ThanksBtn = document.querySelector(".close-thanks-btn");
+// const modalCloseBtn = document.querySelectorAll(".close");
 
 
 // close modal event
 // modalCloseBtn.addEventListener("click", closeModal);
 
-// close modal form
+// close modal form with X 
 closeModal.onclick = function(){
   modalbg.style.display = "none";
 }
+
+
+
+// // launch modal event
+// ThanksBtn.forEach((btn) => btn.addEventListener("click", closeThanksModal));
+
+// // close modal thanks message with Thanks button
+// function closeThanksModal() {
+  
+//   thankYouMsg.classList.add('visible');
+// }
+
 // function closeModal() {
 //   closeModalBg.style.display = "none";
 // }
