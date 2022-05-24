@@ -625,6 +625,8 @@ footer {
     display: block;
   }
 
+  
+
   .content{
     max-width: none;
     margin-top: 80px;
@@ -636,7 +638,9 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -646,6 +650,10 @@ footer {
     float: none;
     display: block;
     text-align: left;
+  }
+
+  .topnav.responsive .header-logo{
+    display: none;
   }
 
   /* changing nav position and margins on mobile */
