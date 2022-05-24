@@ -23,8 +23,9 @@ function launchModal() {
 
 // ------ Christine's code below ------
 // DOM Elements
-const closeModal = document.querySelector(".close");
-// const thankYouMsg = document.querySelector(".thanks-msg-wrap");
+const closeModal = document.querySelector('.close');
+const closeThanksModal = document.querySelector('.close-thanks-btn');
+// const thankYouMsg = document.querySelector('.thanks-msg-wrap');
 // const ThanksBtn = document.querySelector(".close-thanks-btn");
 // const modalCloseBtn = document.querySelectorAll(".close");
 
@@ -35,7 +36,30 @@ const closeModal = document.querySelector(".close");
 // close modal form with X 
 closeModal.onclick = function(){
   modalbg.style.display = "none";
+
 }
+
+closeThanksModal.onclick = function(){
+  modalbg.style.display = "none";
+}
+
+
+// closeBtns = document.getElementsByClassName("close");
+// for (var i = 0; i < closeBtns.length; i++) {
+//   closeBtns[i].addEventListener("click", function () {
+//     function closeWindow() {
+//       modalbg.style.display = "none";
+//     }
+//   });
+// }
+
+// let closeBtns = document.getElementsByClassName('close');
+
+// closeBtns.forEach(function (i) {
+//   i.addEventListener('click', function() {
+//     console.log(i);
+//   });
+// });
 
 
 
