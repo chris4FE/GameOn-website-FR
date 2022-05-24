@@ -594,6 +594,11 @@ footer {
     margin: 32px auto 10px;
     padding: 12px 35px;
   }
+
+  .bground{
+    background: none;
+  }
+
   .copyrights {
     margin-top: 0;
     text-align: center;
