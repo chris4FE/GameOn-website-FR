@@ -48,7 +48,7 @@ form.addEventListener('submit', (e) => {
 const checkFirstName = () => {
     let value = first.value.trim();
     if (!value || value.length < 2) {
-        showError(first, ErrorFirstName)
+        showError(first, ErrorFirstName);
         return false;
     }
     else {
@@ -61,13 +61,11 @@ const checkFirstName = () => {
 const checkLastName = () => {
     let value = last.value.trim();
     if (!value || value.length < 2 || !value.match(nameFormat)) {
-        last.parentElement.lastElementChild.innerHTML = ErrorLastName;
-        last.classList.add('error');
+        showError(last, ErrorLastName);
         return false;
     }
     else {
-        last.parentElement.lastElementChild.innerHTML = "";
-        last.classList.remove('error');
+        hideError(last);
         return true;
     }
 }
@@ -76,14 +74,12 @@ const checkLastName = () => {
 const checkEmail = () => {
     let value = email.value.trim();
     if (!value || !value.match(mailformat)) {
-        email.parentElement.lastElementChild.innerHTML = ErrorEmail;
-        email.classList.add('error');
+        showError(email, ErrorEmail);
         return false;
 
     }
     else {
-        email.parentElement.lastElementChild.innerHTML = "";
-        email.classList.remove('error');
+        hideError(email);
         return true;
     }
 }
@@ -92,12 +88,10 @@ const checkEmail = () => {
 const checkBirthdate = () => {
     let value = birthdate.value;
     if (!value || !value.match(birthdateFormat)) {
-        birthdate.parentElement.lastElementChild.innerHTML = ErrorBirthdate;
-        birthdate.classList.add('error');
+        showError(birthdate, ErrorBirthdate);
         return false;
     } else {
-        birthdate.parentElement.lastElementChild.innerHTML = "";
-        birthdate.classList.remove('error');
+        hideError(birthdate);
         return true;
     }
 }
@@ -106,13 +100,11 @@ const checkBirthdate = () => {
 const checkTournamentsQuantity = () => {
     let value = tournamentQuantity.value;
     if (!value || value < 1) {
-        tournamentQuantity.parentElement.lastElementChild.innerHTML = ErrorQuantity;
-        tournamentQuantity.classList.add('error');
+        showError(tournamentQuantity, ErrorQuantity);
         return false;
     }
     else {
-        tournamentQuantity.parentElement.lastElementChild.innerHTML = "";
-        tournamentQuantity.classList.remove('error');
+        hideError(tournamentQuantity);
         return true;
     }
 }
