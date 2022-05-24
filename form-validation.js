@@ -15,11 +15,11 @@ const thankYouForSigningUp = document.querySelector(".thanks-msg-wrap");
 
 const ErrorFirstName = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
 const ErrorLastName = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
-const ErrorEmail = "Veuillez renseigner une adresse électronique.";
+const ErrorEmail = "L'adresse électronique n'est pas valide.";
 const ErrorBirthdate = "Vous devez entrer votre date de naissance.";
 const ErrorBirthdate18 = "Vous devez être majeur.";
-const ErrorQuantity = "Vous devez entrer votre nombre de participation.";
-const ErrorLocation = "Vous devez choisir une ville.";
+const ErrorQuantity = "Veuilez entrer votre nombre de participation.";
+const ErrorLocation = "Veuillez choisir une ville.";
 const ErrorAcceptTerms = "Veuillez lire et accepter les termes et conditions.";
 
 // REGEX
@@ -87,8 +87,15 @@ const checkEmail = () => {
 // VALIDATE BIRTHDATE
 const checkBirthdate = () => {
     let value = birthdate.value;
-    if (!value || !value.match(birthdateFormat)) {
+    let now = new Date();
+    let [year, month, day] = value.split('-');
+    const birthday = new Date(year, month-1, day);
+
+    if (!birthdateFormat.test(value)) {
         showError(birthdate, ErrorBirthdate);
+        return false;
+    } else if (birthday > new Date(now.setFullYear(now.getFullYear() - 18))) {
+        showError(birthdate, ErrorBirthdate18);
         return false;
     } else {
         hideError(birthdate);
