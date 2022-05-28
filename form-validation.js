@@ -1,5 +1,4 @@
 // DOM elements
-const form = document.getElementById('form');
 const first = document.getElementById('first');
 const last = document.getElementById('last');
 const email = document.getElementById('email');
@@ -32,6 +31,10 @@ const showError = (input, message) => {
     input.parentElement.lastElementChild.innerHTML = message;
     input.classList.add('error');
 }
+/**
+ * hide error function
+ * @param {HTMLElement} input 
+ */
 const hideError = (input) => {
     input.parentElement.lastElementChild.innerHTML = "";
     input.classList.remove('error');
@@ -47,7 +50,7 @@ form.addEventListener('submit', (e) => {
 // VALIDATE FIRST NAME
 const checkFirstName = () => {
     let value = first.value.trim();
-    if (!value || value.length < 2) {
+    if (!value || value.length < 2 || !value.match(nameFormat)) {
         showError(first, ErrorFirstName);
         return false;
     }
@@ -76,7 +79,6 @@ const checkEmail = () => {
     if (!value || !value.match(mailformat)) {
         showError(email, ErrorEmail);
         return false;
-
     }
     else {
         hideError(email);
@@ -85,6 +87,10 @@ const checkEmail = () => {
 }
 
 // VALIDATE BIRTHDATE
+/**
+ * 
+ * @returns 
+ */
 const checkBirthdate = () => {
     let value = birthdate.value;
     let now = new Date();

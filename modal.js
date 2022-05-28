@@ -25,55 +25,23 @@ function launchModal() {
 // DOM Elements
 const closeModal = document.querySelector('.close');
 const closeThanksModal = document.querySelector('.close-thanks-btn');
-// const thankYouMsg = document.querySelector('.thanks-msg-wrap');
-// const ThanksBtn = document.querySelector(".close-thanks-btn");
-// const modalCloseBtn = document.querySelectorAll(".close");
-
-
-// close modal event
-// modalCloseBtn.addEventListener("click", closeModal);
+const thankYouMsg = document.querySelector('.thanks-msg-wrap');
+const form = document.getElementById('form');
 
 // close modal form with X 
 closeModal.onclick = function(){
   modalbg.style.display = "none";
-
-}
-
-closeThanksModal.onclick = function(){
-  modalbg.style.display = "none";
-}
-
-
-// closeBtns = document.getElementsByClassName("close");
-// for (var i = 0; i < closeBtns.length; i++) {
-//   closeBtns[i].addEventListener("click", function () {
-//     function closeWindow() {
-//       modalbg.style.display = "none";
-//     }
-//   });
-// }
-
-// let closeBtns = document.getElementsByClassName('close');
-
-// closeBtns.forEach(function (i) {
-//   i.addEventListener('click', function() {
-//     console.log(i);
-//   });
-// });
-
-
-
-// // launch modal event
-// ThanksBtn.forEach((btn) => btn.addEventListener("click", closeThanksModal));
-
-// // close modal thanks message with Thanks button
-// function closeThanksModal() {
+  form.reset();
   
-//   thankYouMsg.classList.add('visible');
-// }
 
-// function closeModal() {
-//   closeModalBg.style.display = "none";
-// }
+}
+
+closeThanksModal.addEventListener("click", closeModalFct);
+function closeModalFct() {
+    modalbg.style.display = "none";
+    thankYouMsg.style.display = "none";
+    // reset form fields when reopening it
+    form.reset();
+  }
 
 
