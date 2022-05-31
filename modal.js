@@ -1,3 +1,8 @@
+
+
+
+// MODAL 
+
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -11,6 +16,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const errorMessages = document.getElementsByClassName('error');
 
 
 // launch modal event
@@ -28,20 +34,30 @@ const closeThanksModal = document.querySelector('.close-thanks-btn');
 const thankYouMsg = document.querySelector('.thanks-msg-wrap');
 const form = document.getElementById('form');
 
-// close modal form with X 
-closeModal.onclick = function(){
+// close modal form with X
+closeModal.onclick = function() {
   modalbg.style.display = "none";
   form.reset();
-  
-
-}
+  hideError(first);
+  hideError(last);
+  hideError(email);
+  hideError(birthdate);
+  hideError(tournamentQuantity);
+  hideError(locationRadio);
+  hideError(acceptTerms);
+};
 
 closeThanksModal.addEventListener("click", closeModalFct);
 function closeModalFct() {
-    modalbg.style.display = "none";
-    thankYouMsg.style.display = "none";
-    // reset form fields when reopening it
-    form.reset();
-  }
-
-
+  modalbg.style.display = "none";
+  thankYouMsg.style.display = "none";
+  // reset form fields when reopening it
+  form.reset();
+  hideError(first);
+  hideError(last);
+  hideError(email);
+  hideError(birthdate);
+  hideError(tournamentQuantity);
+  hideError(locationRadio);
+  hideError(acceptTerms);
+}
