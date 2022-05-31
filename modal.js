@@ -37,7 +37,9 @@ const form = document.getElementById('form');
 // close modal form with X
 closeModal.onclick = function() {
   modalbg.style.display = "none";
+  // reset form fields when reopening it
   form.reset();
+  // hide error messages after form is closed
   hideError(first);
   hideError(last);
   hideError(email);
@@ -53,6 +55,7 @@ function closeModalFct() {
   thankYouMsg.style.display = "none";
   // reset form fields when reopening it
   form.reset();
+  // hide error messages after form is closed
   hideError(first);
   hideError(last);
   hideError(email);
