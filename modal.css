@@ -226,15 +226,15 @@ input[data-error]::after {
   border: 1px solid #f00;
 }
 
-.formData.error input{
-  border: 1px solid #f00;
-}
-
 .formData span{
   font-size: 10px;
+  font-weight: 200;
   color: #f00;
 }
 
+.terms{
+  margin-top: 15px;
+}
 
 .checkbox-label,
 .checkbox2-label {
