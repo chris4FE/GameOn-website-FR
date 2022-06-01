@@ -1,6 +1,6 @@
 // DOM elements
 /**
- *
+ * Small function to get multiple elements by their IDs
  * @param {HTMLElement} id
  */
 let id = (id) => document.getElementById(id);
@@ -35,7 +35,7 @@ const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const birthdateFormat = /^(19|20)\d{2}[-](0?[1-9]|1[012])[-](0[1-9]|[12]\d|3[01])$/;
 
 /**
- * 
+ * Show error message function
  * @param {HTMLElement} input 
  * @param {*} message 
  */
@@ -44,42 +44,13 @@ const showError = (input, message) => {
     input.classList.add('error');
 }
 /**
- * hide error function
+ * hide error message function
  * @param {HTMLElement} input 
  */
 const hideError = (input) => {
     input.parentElement.lastElementChild.innerHTML = "";
     input.classList.remove('error');
 }
-
-/**
- * Decrire la fonction
- * @param {HTMLElement} type 
- * @param {string} ErrorNameMinCharacters 
- * @param {string} ErrorMain 
- * @returns 
- */
-const checkNames = (type, ErrorNameMinCharacters, ErrorMain) => {
-
-    type.addEventListener('input', checkFirstName);
-    // checking input value
-    let value = type.value.trim();
-    if (!value || value.length < 2) {
-        showError(type, ErrorNameMinCharacters
-            );
-        return false;
-    } 
-    else if (!value.match(nameFormat)){
-        showError(type, ErrorMain);
-        return false;
-    } 
-    else {
-        hideError(type);
-        return true;
-    }
-}
-
-
 
 
 // Form Submit Event listener
@@ -156,7 +127,7 @@ const checkEmail = () => {
 
 /**
  * BIRTHDATE check and validation
- * @returns 
+ * @returns true or false
  */
 const checkBirthdate = () => {
     // checking input live while typing
@@ -181,7 +152,7 @@ const checkBirthdate = () => {
 
 /**
  * NUMBER OF TOURNAMENTS check and validation
- * @returns 
+ * @returns true or false
  */
 const checkTournamentsQuantity = () => {
     // checking input live while typing
@@ -200,7 +171,7 @@ const checkTournamentsQuantity = () => {
 
 /**
  * LOCATIONS check and validation
- * @returns 
+ * @returns true or false
  */
 const checkLocation = () => {
     // // checking input live while typing
@@ -233,7 +204,7 @@ const checkLocation = () => {
 
 /**
  * ACCEPT TERMS AND CONDITION BOX check and validation
- * @returns 
+ * @returns true or false
  */
 const checkAcceptTerms = () => {
     // checking input live while typing
