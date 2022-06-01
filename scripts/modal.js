@@ -23,6 +23,7 @@ function launchModal() {
 }
 
 // ------ Christine's code below ------
+
 // DOM Elements
 const closeModal = document.querySelector('.close');
 const closeThanksModal = document.querySelector('.close-thanks-btn');
