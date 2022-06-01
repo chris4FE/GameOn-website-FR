@@ -4,13 +4,13 @@
  * @param {HTMLElement} id
  */
 let id = (id) => document.getElementById(id);
-
 const first = id('first'),
     last = id('last'),
     email = id('email'),
     birthdate = id('birthdate'),
     tournamentQuantity = id('quantity'),
-    acceptTerms = id('checkbox1');
+    acceptTerms = id('checkbox1'),
+    locations = id('locations');
 
 const locationRadio = document.querySelector("input[name='location']");
 
@@ -24,7 +24,7 @@ const ErrorBirthdate = "Vous devez entrer votre date de naissance.";
 const ErrorBirthdate18 = "Vous devez être majeur.";
 const ErrorQuantity = "Veuilez entrer votre nombre de participation.";
 const ErrorLocation = "Veuillez choisir une ville.";
-const ErrorAcceptTerms = "Veuillez lire et accepter les termes et conditions.";
+const ErrorAcceptTerms = "Veuillez lire et accepter les conditions d'utilisation.";
 
 // Thank You for signing up Message
 const thankYouForSigningUp = document.querySelector(".thanks-msg-wrap");
@@ -52,6 +52,36 @@ const hideError = (input) => {
     input.classList.remove('error');
 }
 
+/**
+ * Decrire la fonction
+ * @param {HTMLElement} type 
+ * @param {string} ErrorNameMinCharacters 
+ * @param {string} ErrorMain 
+ * @returns 
+ */
+const checkNames = (type, ErrorNameMinCharacters, ErrorMain) => {
+
+    type.addEventListener('input', checkFirstName);
+    // checking input value
+    let value = type.value.trim();
+    if (!value || value.length < 2) {
+        showError(type, ErrorNameMinCharacters
+            );
+        return false;
+    } 
+    else if (!value.match(nameFormat)){
+        showError(type, ErrorMain);
+        return false;
+    } 
+    else {
+        hideError(type);
+        return true;
+    }
+}
+
+
+
+
 // Form Submit Event listener
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -59,9 +89,11 @@ form.addEventListener('submit', (e) => {
     validateForm();
 });
 
-// VALIDATE FIRST NAME
-
-const checkFirstName = () => {
+/**
+ * FIRST NAME check and validation
+ * @returns true or false
+ */
+ const checkFirstName = () => {
     // checking input live while typing
     first.addEventListener('input', checkFirstName);
     // checking input value
@@ -69,19 +101,21 @@ const checkFirstName = () => {
     if (!value || value.length < 2) {
         showError(first, ErrorFirstNameMinimumCharacters);
         return false;
-    } 
-    else if (!value.match(nameFormat)){
+    }
+    else if (!value.match(nameFormat)) {
         showError(first, ErrorFirstName);
         return false;
-    } 
+    }
     else {
         hideError(first);
         return true;
     }
 }
 
-// VALIDATE LAST NAME
-
+/**
+ * LAST NAME check and validation
+ * @returns true or false
+ */
 const checkLastName = () => {
     // checking input live while typing
     last.addEventListener('input', checkLastName);
@@ -101,8 +135,10 @@ const checkLastName = () => {
     }
 }
 
-// VALIDATE EMAIL
-
+/**
+ * EMAIL check and validation
+ * @returns true or false
+ */
 const checkEmail = () => {
     // checking input live while typing
     email.addEventListener('input', checkEmail);
@@ -118,8 +154,10 @@ const checkEmail = () => {
     }
 }
 
-// VALIDATE BIRTHDATE
-
+/**
+ * BIRTHDATE check and validation
+ * @returns 
+ */
 const checkBirthdate = () => {
     // checking input live while typing
     birthdate.addEventListener('input', checkBirthdate);
@@ -141,8 +179,10 @@ const checkBirthdate = () => {
     }
 }
 
-// VALIDATE TOURNAMENTS QTY
-
+/**
+ * NUMBER OF TOURNAMENTS check and validation
+ * @returns 
+ */
 const checkTournamentsQuantity = () => {
     // checking input live while typing
     tournamentQuantity.addEventListener('input', checkTournamentsQuantity);
@@ -158,11 +198,14 @@ const checkTournamentsQuantity = () => {
     }
 }
 
-// VALIDATE LOCATION RADIO BUTTONS
-
+/**
+ * LOCATIONS check and validation
+ * @returns 
+ */
 const checkLocation = () => {
     // // checking input live while typing
-    locationRadio.addEventListener('input', checkLocation);
+    locations.addEventListener('input', checkLocation);
+    // alert('LOCATIONS');
     // checking input value
     let checkedLocation = document.querySelector('input[name="location"]:checked');
     // const changeCheckedLocations = document.querySelectorAll('input[name="location"]');
@@ -188,8 +231,10 @@ const checkLocation = () => {
 }
 
 
-// VALIDATE CHECKED ACCEPT TERMS AND CONDITIONS BOX
-
+/**
+ * ACCEPT TERMS AND CONDITION BOX check and validation
+ * @returns 
+ */
 const checkAcceptTerms = () => {
     // checking input live while typing
     acceptTerms.addEventListener('input', checkAcceptTerms);
@@ -206,8 +251,9 @@ const checkAcceptTerms = () => {
 }
 
 
-// VALIDATE ALL FORM INPUTS
-
+/**
+ * Check whether all form inputs return true value - if so, display thank you message
+ */
 function validateForm() {
 
     let boolFirstName = checkFirstName();
